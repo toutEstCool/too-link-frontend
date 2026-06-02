@@ -10,9 +10,14 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   
   // Определяем базовый URL бэкенда для проксирования
-  const backendUrl = env.VITE_API_URL
-    ? new URL(env.VITE_API_URL).origin
-    : 'http://localhost:3000';
+  let backendUrl = 'http://localhost:3000';
+  if (env.VITE_API_URL && env.VITE_API_URL.startsWith('http')) {
+    try {
+      backendUrl = new URL(env.VITE_API_URL).origin;
+    } catch {
+      // Игнорируем некорректный URL
+    }
+  }
 
   return {
     plugins: [
