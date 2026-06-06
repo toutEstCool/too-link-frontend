@@ -11,6 +11,9 @@ importers:
       '@fontsource-variable/geist':
         specifier: ^5.2.9
         version: 5.2.9
+      '@fontsource/fustat':
+        specifier: ^5.2.7
+        version: 5.2.7
       '@hookform/resolvers':
         specifier: ^5.4.0
         version: 5.4.0(react-hook-form@7.77.0(react@19.2.7))
@@ -321,6 +324,9 @@ packages:
 
   '@fontsource-variable/geist@5.2.9':
     resolution: {integrity: sha512-TP+QSBG3wxKGPE33CbMy/L0Nu3qvJ6Fy81Yc4LnQ95xH+i+cfEp8fyU8/kfV14YwszxIFPhnoMTbjL71waVpyQ==}
+
+  '@fontsource/fustat@5.2.7':
+    resolution: {integrity: sha512-BAJfo2loZ9Vc4zvVesPd/tnkMeoWTeM8jDgVXJ8PMIT/8+eFu9EkcNbsDnwuInSCtaiXgi/Y3WJe2qWsQE8wSg==}
 
   '@hono/node-server@1.19.14':
     resolution: {integrity: sha512-GwtvgtXxnWsucXvbQXkRgqksiH2Qed37H9xHZocE5sA3N8O8O8/8FA3uclQXxXVzc9XBZuEOMK7+r02FmSpHtw==}
@@ -3581,6 +3587,8 @@ snapshots:
   '@floating-ui/utils@0.2.11': {}
 
   '@fontsource-variable/geist@5.2.9': {}
+
+  '@fontsource/fustat@5.2.7': {}
 
   '@hono/node-server@1.19.14(hono@4.12.23)':
     dependencies:

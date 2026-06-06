@@ -17,26 +17,26 @@ export const MetricsDistribution: React.FC<MetricsDistributionProps> = ({
 }) => {
   // Подготовка данных для диаграммы статусов recharts
   const chartData = [
-    { name: 'Активные', value: active, color: '#10b981' },
-    { name: 'Блокированные', value: suspended, color: '#ef4444' },
-    { name: 'Grace-период', value: grace, color: '#f59e0b' },
+    { name: 'Активные', value: active, fill: 'var(--color-success)' },
+    { name: 'Блокированные', value: suspended, fill: 'var(--color-destructive)' },
+    { name: 'Grace-период', value: grace, fill: 'var(--color-warning)' },
   ].filter(item => item.value > 0);
 
   return (
-    <Card className="border-zinc-800 bg-zinc-900/40 backdrop-blur-md text-zinc-50 rounded-xl">
+    <Card className="border-border bg-card/40 backdrop-blur-md text-foreground rounded-xl">
       <CardHeader>
-        <CardTitle className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
+        <CardTitle className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
           Состояние базы доступа
         </CardTitle>
-        <CardDescription className="text-zinc-500 text-[10px] uppercase tracking-wider">
+        <CardDescription className="text-muted-foreground text-[10px] uppercase tracking-wider">
           Соотношение активных и должников
         </CardDescription>
       </CardHeader>
       <CardContent className="h-64 flex items-center justify-center">
         {isLoading ? (
-          <div className="text-sm text-zinc-500 animate-pulse uppercase tracking-wider">Генерация диаграммы...</div>
+          <div className="text-sm text-muted-foreground animate-pulse uppercase tracking-wider">Генерация диаграммы...</div>
         ) : chartData.length === 0 ? (
-          <div className="text-xs text-zinc-500 uppercase tracking-wider">Нет данных для отображения</div>
+          <div className="text-xs text-muted-foreground uppercase tracking-wider">Нет данных для отображения</div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -50,12 +50,12 @@ export const MetricsDistribution: React.FC<MetricsDistributionProps> = ({
                 dataKey="value"
               >
                 {chartData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
+                  <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
               <Tooltip
-                contentStyle={{ backgroundColor: '#18181b', borderColor: '#27272a', color: '#fafafa', borderRadius: '8px' }}
-                itemStyle={{ color: '#fafafa' }}
+                contentStyle={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)', color: 'var(--foreground)', borderRadius: '8px' }}
+                itemStyle={{ color: 'var(--foreground)' }}
               />
               <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ fontSize: '12px' }} />
             </PieChart>

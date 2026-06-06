@@ -69,12 +69,12 @@ export const LoginForm: React.FC = () => {
     : null;
 
   return (
-    <Card className="w-full border-zinc-800/60 bg-black/60 backdrop-blur-3xl text-zinc-100 shadow-[0_0_80px_rgba(0,0,0,0.8)] rounded-md py-6">
+    <Card className="w-full border-border bg-card/60 backdrop-blur-3xl text-card-foreground shadow-[0_0_80px_rgba(0,0,0,0.15)] dark:shadow-[0_0_80px_rgba(0,0,0,0.8)] rounded-xl py-6">
       <CardHeader className="space-y-2 text-center pb-4">
-        <CardTitle className="text-xl font-bold tracking-[0.25em] text-white uppercase font-sans">
+        <CardTitle className="text-xl font-bold tracking-[0.25em] text-foreground uppercase font-brand">
           Too-Link Billing
         </CardTitle>
-        <CardDescription className="text-[10px] tracking-[0.15em] text-zinc-500 uppercase">
+        <CardDescription className="text-[10px] tracking-[0.15em] text-muted-foreground uppercase">
           Вход в панель управления
         </CardDescription>
       </CardHeader>
@@ -84,15 +84,15 @@ export const LoginForm: React.FC = () => {
           
           {/* Ошибка запроса */}
           {apiError && (
-            <div className="flex items-center gap-3 bg-red-950/20 border border-red-900/30 rounded-md p-3 text-xs text-red-400 uppercase tracking-wider font-semibold">
+            <div className="flex items-center gap-3 bg-red-950/20 border border-red-900/30 rounded-lg p-3 text-xs text-red-400 uppercase tracking-wider font-semibold">
               <ShieldAlert className="w-4 h-4 shrink-0 text-red-500" />
               <span>{apiError}</span>
             </div>
           )}
-
+ 
           {/* Логин */}
           <div className="space-y-2">
-            <Label htmlFor="username" className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+            <Label htmlFor="username" className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
               Имя пользователя
             </Label>
             <div className="relative">
@@ -101,7 +101,7 @@ export const LoginForm: React.FC = () => {
                 type="text"
                 placeholder="username"
                 disabled={isPending}
-                className={`bg-zinc-950/80 border-zinc-800 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-sm h-11 text-sm tracking-wide ${errors.username ? 'border-red-650' : 'border-zinc-800'}`}
+                className={`bg-background/80 border-border text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide ${errors.username ? 'border-destructive' : 'border-border'}`}
                 {...register('username')}
               />
             </div>
@@ -109,10 +109,10 @@ export const LoginForm: React.FC = () => {
               <p className="text-xs text-red-400 font-medium tracking-wide">{errors.username.message}</p>
             )}
           </div>
-
+ 
           {/* Пароль */}
           <div className="space-y-2">
-            <Label htmlFor="password" className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+            <Label htmlFor="password" className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
               Пароль
             </Label>
             <div className="relative">
@@ -121,13 +121,13 @@ export const LoginForm: React.FC = () => {
                 type={showPassword ? 'text' : 'password'}
                 placeholder="password"
                 disabled={isPending}
-                className={`bg-zinc-950/80 border-zinc-800 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-sm h-11 text-sm tracking-wide pr-10 ${errors.password ? 'border-red-650' : 'border-zinc-800'}`}
+                className={`bg-background/80 border-border text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide pr-10 ${errors.password ? 'border-destructive' : 'border-border'}`}
                 {...register('password')}
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-zinc-650 hover:text-zinc-300 transition-colors"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-muted-foreground hover:text-foreground transition-colors"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
@@ -136,14 +136,14 @@ export const LoginForm: React.FC = () => {
               <p className="text-xs text-red-400 font-medium tracking-wide">{errors.password.message}</p>
             )}
           </div>
-
+ 
         </CardContent>
         
         <CardFooter className="bg-transparent border-t-0 p-5 pt-0">
           <Button
             type="submit"
             disabled={isPending}
-            className="w-full flex items-center justify-center gap-2 bg-white hover:bg-zinc-200 text-black font-bold uppercase tracking-[0.2em] text-xs h-11 rounded-sm cursor-pointer transition-all active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none mt-5"
+            className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-[0.2em] text-xs h-11 rounded-lg cursor-pointer transition-all active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none mt-5"
           >
             {isPending ? (
               <>
