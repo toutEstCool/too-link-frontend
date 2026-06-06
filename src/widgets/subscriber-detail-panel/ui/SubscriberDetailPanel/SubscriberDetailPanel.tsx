@@ -22,7 +22,7 @@ import { formatDate, cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 
 // ---------------------------------------------------------------------------
-// Internal sub-components (не экспортируются из слайса)
+// Внутренние подкомпоненты (не экспортируются из слайса)
 // ---------------------------------------------------------------------------
 
 interface CopyableFieldProps {
@@ -90,7 +90,7 @@ const StaticField: React.FC<StaticFieldProps> = ({ label, value, icon }) => (
 );
 
 // ---------------------------------------------------------------------------
-// Public component
+// Публичный компонент
 // ---------------------------------------------------------------------------
 
 export interface SubscriberDetailPanelProps {

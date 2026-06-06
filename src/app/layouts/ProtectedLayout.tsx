@@ -9,7 +9,7 @@ interface ProtectedLayoutProps {
 
 export const ProtectedLayout: React.FC<ProtectedLayoutProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(() => {
-    // On mobile default to closed; on desktop restore persisted value
+    // На мобильных — закрыт по умолчанию; на десктопе — восстанавливаем сохранённое состояние
     if (window.innerWidth < 768) {
       return false;
     }
@@ -26,11 +26,11 @@ export const ProtectedLayout: React.FC<ProtectedLayoutProps> = ({ children }) =>
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans flex relative overflow-hidden">
-      {/* Background ambient light effects */}
+      {/* Фоновые световые эффекты (ambient) */}
       <div className="absolute top-0 right-1/4 w-[600px] h-[300px] bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[400px] h-[300px] bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Mobile top bar with burger button */}
+      {/* Верхний мобильный бар с кнопкой бургера */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-background/90 border-b border-border backdrop-blur-xl flex items-center justify-between px-4 z-40">
         <button
           onClick={() => handleToggleSidebar(true)}
@@ -48,7 +48,7 @@ export const ProtectedLayout: React.FC<ProtectedLayoutProps> = ({ children }) =>
         <div className="w-6" />
       </div>
 
-      {/* Mobile sidebar overlay */}
+      {/* Оверлей для мобильного сайдбара */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-background/65 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300"
@@ -56,10 +56,10 @@ export const ProtectedLayout: React.FC<ProtectedLayoutProps> = ({ children }) =>
         />
       )}
 
-      {/* Sidebar */}
+      {/* Сайдбар */}
       <Sidebar isOpen={isSidebarOpen} onToggle={handleToggleSidebar} />
 
-      {/* Main content */}
+      {/* Основной контент */}
       <div
         className={cn(
           'flex-1 min-w-0 min-h-screen transition-all duration-300 relative z-10 pt-16 md:pt-0 pl-0 md:pl-16',

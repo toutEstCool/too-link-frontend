@@ -9,7 +9,7 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-/** Applies the resolved theme class to document.documentElement. */
+/** Применяет класс темы к document.documentElement. */
 function applyTheme(theme: Theme): void {
   const root = document.documentElement;
   if (theme === 'dark') {
@@ -17,7 +17,7 @@ function applyTheme(theme: Theme): void {
   } else if (theme === 'light') {
     root.classList.remove('dark');
   } else {
-    // system
+    // системная тема
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       root.classList.add('dark');
     } else {
@@ -61,7 +61,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   );
 };
 
-/** Hook for consuming theme context. Must be used inside ThemeProvider. */
+/** Хук для получения контекста темы. Использовать только внутри ThemeProvider. */
 export const useTheme = (): ThemeContextValue => {
   const ctx = useContext(ThemeContext);
   if (ctx === null) {

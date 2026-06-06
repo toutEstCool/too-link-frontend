@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-/** Safely checks whether admin_user record exists in localStorage. */
+/** Безопасно проверяет наличие записи admin_user в localStorage. */
 function hasAdminUser(): boolean {
   try {
     const raw = localStorage.getItem('admin_user');
@@ -18,8 +18,8 @@ interface GuardProps {
 }
 
 /**
- * Allows access only to authenticated users.
- * Redirects to /login when admin_user is absent from localStorage.
+ * Предоставляет доступ только аутентифицированным пользователям.
+ * Перенаправляет на /login, если admin_user отсутствует в localStorage.
  */
 export const ProtectedRoute: React.FC<GuardProps> = ({ children }) => {
   if (!hasAdminUser()) {
@@ -29,8 +29,8 @@ export const ProtectedRoute: React.FC<GuardProps> = ({ children }) => {
 };
 
 /**
- * Allows access only to guests (unauthenticated users).
- * Redirects to / when admin_user is present in localStorage.
+ * Предоставляет доступ только гостям (неаутентифицированным пользователям).
+ * Перенаправляет на /, если admin_user присутствует в localStorage.
  */
 export const PublicOnlyRoute: React.FC<GuardProps> = ({ children }) => {
   if (hasAdminUser()) {

@@ -51,7 +51,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, isOpen, onToggle })
   const filteredMenuItems = menuItems.filter((item) => item.roles.includes(admin.role));
 
   const handleLinkClick = () => {
-    // On mobile, close sidebar on nav link click
+    // На мобильных устройствах закрываем сайдбар при клике на навигационную ссылку
     if (window.innerWidth < 768) {
       onToggle(false);
     }
@@ -67,7 +67,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, isOpen, onToggle })
       )}
     >
       <div className="flex flex-col gap-8 py-6 px-3">
-        {/* Logo area */}
+        {/* Область логотипа */}
         <div className={cn('flex items-center justify-between px-2', !isOpen && 'md:justify-center')}>
           {(isOpen || window.innerWidth < 768) ? (
             <div className="flex items-center gap-2">
@@ -81,7 +81,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, isOpen, onToggle })
           )}
         </div>
 
-        {/* Navigation */}
+        {/* Навигация */}
         <nav className="flex flex-col gap-1.5">
           {filteredMenuItems.map((item) => {
             const Icon = item.icon;
@@ -108,7 +108,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className, isOpen, onToggle })
         </nav>
       </div>
 
-      {/* Bottom: role badge + collapse button */}
+      {/* Нижняя часть: бейдж роли + кнопка сворачивания */}
       <div className="p-3 border-t border-sidebar-border flex flex-col gap-4">
         {(isOpen || window.innerWidth < 768) && (
           <div className="flex items-center gap-2.5 px-2.5 py-1">

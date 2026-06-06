@@ -12,7 +12,7 @@ function parseAdmin(raw: string | null): Admin {
   if (!raw) return DEFAULT_ADMIN;
   try {
     const parsed = JSON.parse(raw) as Admin;
-    // Basic type-guard: ensure required shape is present
+    // Базовый type-guard: проверяем наличие обязательной структуры
     if (typeof parsed.role !== 'string') return DEFAULT_ADMIN;
     return parsed;
   } catch {
@@ -23,7 +23,7 @@ function parseAdmin(raw: string | null): Admin {
 export function useAdmin(): Admin {
   return useMemo(
     () => parseAdmin(localStorage.getItem('admin_user')),
-    // Note: localStorage is read once on mount (no reactivity needed for session data)
+    // Примечание: localStorage читается один раз при монтировании (реактивность для сессионных данных не требуется)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );

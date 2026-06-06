@@ -29,11 +29,11 @@ export const Header: React.FC<HeaderProps> = ({
   const admin = useAdmin();
   const { theme, setTheme } = useTheme();
 
-  // Dropdown open state
+  // Состояние открытия выпадающего списка
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  // Close dropdown on outside click
+  // Закрытие выпадающего списка при клике вовне
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -103,14 +103,14 @@ export const Header: React.FC<HeaderProps> = ({
           </Button>
         )}
 
-        {/* Profile & Avatar dropdown */}
+        {/* Выпадающее меню профиля и аватара */}
         <div className="relative" ref={dropdownRef}>
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             className="relative w-9 h-9 rounded-full overflow-hidden border border-border focus:outline-none hover:ring-2 hover:ring-indigo-500/50 transition-all cursor-pointer select-none flex items-center justify-center bg-muted"
             aria-label="Профиль"
           >
-            {/* Gradient avatar with initials fallback */}
+            {/* Градиентный аватар с инициалами в качестве заглушки */}
             <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-xs">
               {admin.fullName ? admin.fullName.charAt(0).toUpperCase() : 'A'}
             </div>
@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {isDropdownOpen && (
             <div className="absolute right-0 mt-2.5 w-72 rounded-xl bg-card border border-border p-3 shadow-xl z-50 flex flex-col gap-2.5 animate-in fade-in slide-in-from-top-2 duration-200">
-              {/* Profile info */}
+              {/* Информация профиля */}
               <div className="flex flex-col gap-0.5">
                 <div className="text-sm font-semibold text-foreground">
                   Привет, {admin.fullName ? admin.fullName.split(' ')[0] : 'Администратор'}!
@@ -130,7 +130,7 @@ export const Header: React.FC<HeaderProps> = ({
 
               <div className="h-px bg-border -mx-3" />
 
-              {/* Theme switcher */}
+              {/* Переключатель темы */}
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground">Тема</span>
                 <div className="flex items-center gap-1 bg-muted p-0.5 rounded-lg border border-border">
@@ -169,7 +169,7 @@ export const Header: React.FC<HeaderProps> = ({
 
               <div className="h-px bg-border -mx-3" />
 
-              {/* Logout */}
+              {/* Выход из системы */}
               <button
                 onClick={() => logout()}
                 disabled={isPending}
