@@ -24,7 +24,7 @@ export const DashboardPage: React.FC = () => {
     : null;
 
   return (
-    <div className="p-6 md:p-8 space-y-8 max-w-7xl mx-auto relative z-10">
+    <div className="p-6 md:p-8 space-y-8 max-w-[1760px] mx-auto relative z-10">
         
         {/* Шапка дашборда (Виджет) */}
         <Header 

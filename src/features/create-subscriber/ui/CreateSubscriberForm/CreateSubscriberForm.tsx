@@ -54,12 +54,12 @@ export const CreateSubscriberForm: React.FC = () => {
     : null;
 
   return (
-    <Card className="w-full border-zinc-800 bg-zinc-900/40 backdrop-blur-md text-zinc-50 rounded-xl py-4">
+    <Card className="w-full border-border bg-card/40 backdrop-blur-md text-foreground rounded-xl py-4">
       <CardHeader className="space-y-1.5 text-center pb-6">
-        <CardTitle className="text-lg font-bold tracking-[0.15em] text-white uppercase font-sans">
+        <CardTitle className="text-lg font-bold tracking-[0.15em] text-foreground uppercase font-brand">
           Регистрация Абонента
         </CardTitle>
-        <CardDescription className="text-[10px] tracking-[0.15em] text-zinc-500 uppercase">
+        <CardDescription className="text-[10px] tracking-[0.15em] text-muted-foreground uppercase">
           Код Finik и параметры авторизации FreeRADIUS генерируются автоматически
         </CardDescription>
       </CardHeader>
@@ -75,8 +75,8 @@ export const CreateSubscriberForm: React.FC = () => {
             )}
 
             {/* Блок 1: Личные данные */}
-            <div className="space-y-4 border-b border-zinc-800/60 pb-6">
-              <h3 className="text-[10px] font-bold tracking-[0.25em] uppercase text-zinc-500">
+            <div className="space-y-4 border-b border-border pb-6">
+              <h3 className="text-[10px] font-bold tracking-[0.25em] uppercase text-muted-foreground font-brand">
                 Абонентские данные
               </h3>
 
@@ -85,14 +85,14 @@ export const CreateSubscriberForm: React.FC = () => {
                 name="fullName"
                 render={({ field }) => (
                   <FormItem className="space-y-2">
-                    <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+                    <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
                       ФИО Абонента
                     </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Токтосунов Асан"
                         disabled={isPending}
-                        className={`bg-zinc-950/40 border-zinc-800 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.fullName ? 'border-red-650' : 'border-zinc-800'}`}
+                        className={`bg-background/40 border-border text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.fullName ? 'border-destructive' : 'border-border'}`}
                         {...field}
                       />
                     </FormControl>
@@ -107,14 +107,14 @@ export const CreateSubscriberForm: React.FC = () => {
                   name="phone"
                   render={({ field }) => (
                     <FormItem className="space-y-2">
-                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
                         Номер телефона
                       </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="+996700000001"
                           disabled={isPending}
-                          className={`bg-zinc-950/40 border-zinc-800 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.phone ? 'border-red-650' : 'border-zinc-800'}`}
+                          className={`bg-background/40 border-border text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.phone ? 'border-destructive' : 'border-border'}`}
                           {...field}
                         />
                       </FormControl>
@@ -128,18 +128,18 @@ export const CreateSubscriberForm: React.FC = () => {
                   name="tariffId"
                   render={({ field }) => (
                     <FormItem className="space-y-2">
-                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
                         Тарифный план
                       </FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                         <FormControl>
-                          <SelectTrigger className={`w-full bg-zinc-950/40 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.tariffId ? 'border-red-650' : 'border-zinc-800'}`}>
+                          <SelectTrigger className={`w-full bg-background/40 text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.tariffId ? 'border-destructive' : 'border-border'}`}>
                             <SelectValue placeholder="Выберите тариф" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="border-zinc-800 bg-zinc-900 text-zinc-100">
+                        <SelectContent className="border-border bg-card text-foreground">
                           {tariffs.map((tariff) => (
-                            <SelectItem key={tariff.id} value={tariff.id} className="focus:bg-zinc-800 focus:text-white cursor-pointer rounded-md">
+                            <SelectItem key={tariff.id} value={tariff.id} className="focus:bg-muted focus:text-foreground cursor-pointer rounded-md">
                               {tariff.name} — {tariff.price} сом ({tariff.speedLimit})
                             </SelectItem>
                           ))}
@@ -153,8 +153,8 @@ export const CreateSubscriberForm: React.FC = () => {
             </div>
 
             {/* Блок 2: Адресные данные */}
-            <div className="space-y-4 border-b border-zinc-800/60 pb-6">
-              <h3 className="text-[10px] font-bold tracking-[0.25em] uppercase text-zinc-500">
+            <div className="space-y-4 border-b border-border pb-6">
+              <h3 className="text-[10px] font-bold tracking-[0.25em] uppercase text-muted-foreground font-brand">
                 Геолокация объекта
               </h3>
               <div className="grid gap-4 md:grid-cols-2">
@@ -163,14 +163,14 @@ export const CreateSubscriberForm: React.FC = () => {
                   name="village"
                   render={({ field }) => (
                     <FormItem className="space-y-2">
-                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
                         Населенный пункт (Село)
                       </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Кара-Суу"
                           disabled={isPending}
-                          className={`bg-zinc-950/40 border-zinc-800 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.village ? 'border-red-650' : 'border-zinc-800'}`}
+                          className={`bg-background/40 border-border text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.village ? 'border-destructive' : 'border-border'}`}
                           {...field}
                         />
                       </FormControl>
@@ -184,14 +184,14 @@ export const CreateSubscriberForm: React.FC = () => {
                   name="address"
                   render={({ field }) => (
                     <FormItem className="space-y-2">
-                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
                         Адрес (Улица, дом)
                       </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="ул. Центральная, д. 12"
                           disabled={isPending}
-                          className={`bg-zinc-950/40 border-zinc-800 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.address ? 'border-red-650' : 'border-zinc-800'}`}
+                          className={`bg-background/40 border-border text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.address ? 'border-destructive' : 'border-border'}`}
                           {...field}
                         />
                       </FormControl>
@@ -204,7 +204,7 @@ export const CreateSubscriberForm: React.FC = () => {
 
             {/* Блок 3: Сетевые инженерные параметры (Необязательно) */}
             <div className="space-y-4 pb-2">
-              <h3 className="text-[10px] font-bold tracking-[0.25em] uppercase text-zinc-500">
+              <h3 className="text-[10px] font-bold tracking-[0.25em] uppercase text-muted-foreground font-brand">
                 Инженерно-сетевые параметры (Опционально)
               </h3>
               
@@ -214,18 +214,18 @@ export const CreateSubscriberForm: React.FC = () => {
                   name="ipAddress"
                   render={({ field }) => (
                     <FormItem className="space-y-1.5">
-                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
                         Статический IP-адрес
                       </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="192.168.1.101"
                           disabled={isPending}
-                          className={`bg-zinc-950/40 border-zinc-800 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.ipAddress ? 'border-red-650' : 'border-zinc-800'}`}
+                          className={`bg-background/40 border-border text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.ipAddress ? 'border-destructive' : 'border-border'}`}
                           {...field}
                         />
                       </FormControl>
-                      <FormDescription className="text-[9px] tracking-wider text-zinc-500 uppercase">
+                      <FormDescription className="text-[9px] tracking-wider text-muted-foreground uppercase">
                         Пусто для динамического IP
                       </FormDescription>
                       <FormMessage className="text-xs text-red-400 font-medium tracking-wide mt-1" />
@@ -238,18 +238,18 @@ export const CreateSubscriberForm: React.FC = () => {
                   name="macAddress"
                   render={({ field }) => (
                     <FormItem className="space-y-1.5">
-                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
                         MAC-адрес роутера
                       </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="AA:BB:CC:DD:EE:FF"
                           disabled={isPending}
-                          className={`bg-zinc-950/40 border-zinc-800 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.macAddress ? 'border-red-650' : 'border-zinc-800'}`}
+                          className={`bg-background/40 border-border text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.macAddress ? 'border-destructive' : 'border-border'}`}
                           {...field}
                         />
                       </FormControl>
-                      <FormDescription className="text-[9px] tracking-wider text-zinc-500 uppercase">
+                      <FormDescription className="text-[9px] tracking-wider text-muted-foreground uppercase">
                         Формат: AA:BB:CC:DD:EE:FF
                       </FormDescription>
                       <FormMessage className="text-xs text-red-400 font-medium tracking-wide mt-1" />
@@ -264,18 +264,18 @@ export const CreateSubscriberForm: React.FC = () => {
                   name="speedLimit"
                   render={({ field }) => (
                     <FormItem className="space-y-1.5">
-                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
                         Персональный лимит скорости
                       </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="50M/50M"
                           disabled={isPending}
-                          className={`bg-zinc-950/40 border-zinc-800 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.speedLimit ? 'border-red-650' : 'border-zinc-800'}`}
+                          className={`bg-background/40 border-border text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.speedLimit ? 'border-destructive' : 'border-border'}`}
                           {...field}
                         />
                       </FormControl>
-                      <FormDescription className="text-[9px] tracking-wider text-zinc-500 uppercase">
+                      <FormDescription className="text-[9px] tracking-wider text-muted-foreground uppercase">
                         Переопределяет дефолтную скорость тарифа
                       </FormDescription>
                       <FormMessage className="text-xs text-red-400 font-medium tracking-wide mt-1" />
@@ -288,18 +288,18 @@ export const CreateSubscriberForm: React.FC = () => {
                   name="mikrotikComment"
                   render={({ field }) => (
                     <FormItem className="space-y-1.5">
-                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-bold">
+                      <FormLabel className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
                         Комментарий для MikroTik
                       </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="id-канал-001"
                           disabled={isPending}
-                          className={`bg-zinc-950/40 border-zinc-800 text-zinc-100 placeholder-zinc-700 focus:border-white focus:ring-0 focus-visible:ring-0 focus-visible:border-white rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.mikrotikComment ? 'border-red-650' : 'border-zinc-800'}`}
+                          className={`bg-background/40 border-border text-foreground placeholder-muted-foreground/50 focus:border-primary focus:ring-0 focus-visible:ring-0 focus-visible:border-primary rounded-lg h-11 text-sm tracking-wide ${form.formState.errors.mikrotikComment ? 'border-destructive' : 'border-border'}`}
                           {...field}
                         />
                       </FormControl>
-                      <FormDescription className="text-[9px] tracking-wider text-zinc-500 uppercase">
+                      <FormDescription className="text-[9px] tracking-wider text-muted-foreground uppercase">
                         Идентификатор для скриптов
                       </FormDescription>
                       <FormMessage className="text-xs text-red-400 font-medium tracking-wide mt-1" />
@@ -310,19 +310,19 @@ export const CreateSubscriberForm: React.FC = () => {
             </div>
           </CardContent>
 
-          <CardFooter className="flex justify-end gap-4 border-t border-zinc-800/60 p-6 pb-2">
+          <CardFooter className="flex justify-end gap-4 border-t border-border p-6 pb-2">
             <Button
               type="button"
               variant="outline"
               onClick={() => navigate('/subscribers')}
-              className="border-neutral-800 bg-neutral-950 hover:bg-neutral-900 text-neutral-300 font-bold uppercase tracking-[0.2em] text-xs h-11 px-6 rounded-lg cursor-pointer transition-all"
+              className="border-border bg-background hover:bg-muted text-foreground font-bold uppercase tracking-[0.2em] text-xs h-11 px-6 rounded-lg cursor-pointer transition-all"
               disabled={isPending}
             >
               Отмена
             </Button>
             <Button
               type="submit"
-              className="bg-white hover:bg-neutral-200 text-black font-bold uppercase tracking-[0.2em] text-xs h-11 px-6 rounded-lg cursor-pointer transition-all active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-[0.2em] text-xs h-11 px-6 rounded-lg cursor-pointer transition-all active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none"
               disabled={isPending}
             >
               {isPending ? (
